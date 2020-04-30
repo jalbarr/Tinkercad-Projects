@@ -1,12 +1,11 @@
-/*** Tinkercad-Projects
+'''
+#Tinkercad-Projects
 
 Circuit of Light Row:
 
   Link: https://www.tinkercad.com/things/l3PPbVqE0S8-copy-of-light-row/editel?sharecode=km11Dwv22Xz37xPKimUEgKdv9WWOdHnVjNqJUSpsDSE
-  
-  Code:
-  
-  ***/
+    
+  '''
   
   int leds[]={5,6,7,8,9,10,11};
 int n=0;
