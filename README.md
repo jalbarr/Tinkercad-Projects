@@ -1,4 +1,4 @@
-Circuit-of-Light-Row:
+Row of Lights:
 
   Circuit: 
   https://www.tinkercad.com/things/hANxsmUO3xB-light-row/editel?sharecode=7AAG7icc2nd4nTF1e7tMYjRA3IS8H8Lp80mJT1W-GG8
