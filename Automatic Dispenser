@@ -1,0 +1,59 @@
+#include <Servo.h>
+
+// Vars
+int pos = 0;
+
+Servo servo_9;
+
+int sigPin = 7;
+
+int distArr[] = {0,0,0,0,0};
+
+// Setup
+void setup()
+{
+  servo_9.attach(9);
+  servo_9.write(5);
+  delay(1000);
+}
+
+// Helper Functions
+long microsecToCent(long microseconds) {
+  return microseconds / 29 / 2;
+}
+
+void updateArr(int num) {
+  distArr[4] = distArr[3];
+  distArr[3] = distArr[2];
+  distArr[2] = distArr[1];
+  distArr[1] = distArr[0];
+  distArr[0] = num;
+}
+
+// Loop
+void loop()
+{
+  // Ultrasonic Sensor
+  long duration, cm = 0;
+  
+  pinMode(sigPin, OUTPUT);
+  digitalWrite(sigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(sigPin, HIGH);
+  delayMicroseconds(7);
+  digitalWrite(sigPin, LOW);
+  
+  pinMode(sigPin, INPUT);
+  duration = pulseIn(sigPin, HIGH);
+  
+  cm = microsecToCent(duration);
+  updateArr(cm);
+  
+  
+  // Servo
+  if(abs(distArr[1]-distArr[0])<5 && abs(distArr[2]-distArr[1])<5 && abs(distArr[3]-distArr[2])<5 && abs(distArr[4]-distArr[3])<5 && cm<30){
+    servo_9.write(90);
+  }
+  
+}
+
